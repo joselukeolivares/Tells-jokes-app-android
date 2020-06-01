@@ -1,0 +1,4 @@
+rootProject.name='bigger'
+include ':app', ':backend'
+include ':androidjokeslibrary'
+include ':JavaJokesLibrary'

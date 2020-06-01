@@ -1,0 +1,77 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 29
+    buildToolsVersion "29.0.3"
+
+    defaultConfig {
+        applicationId "com.example.bigger"
+        minSdkVersion 16
+        targetSdkVersion 29
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    flavorDimensions "version"
+    productFlavors {
+        free {
+            dimension "version"
+            applicationId "com.example.bigger.free"
+            versionNameSuffix "-free"
+
+        }
+        paid {
+            dimension "version"
+            applicationId "com.example.bigger.paid"
+            versionNameSuffix = '-paid'
+
+        }
+    }
+    sourceSets {
+        paid {
+            resources {
+                srcDirs 'src/paid/resources', 'src/paid/java/com.example.bigger'
+            }
+            java {
+                srcDirs 'src/paid/java', 'src/paid/java/com.example.bigger'
+            }
+        }
+    }
+
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+
+    implementation 'androidx.appcompat:appcompat:1.1.0'
+    implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.1'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
+
+    implementation 'com.google.cloud.tools:endpoints-framework-gradle-plugin:1.0.3'
+    endpointsServer project(path: ':backend', configuration: 'endpoints')
+
+
+
+    implementation ('com.google.api-client:google-api-client:1.23.0'){
+        exclude group: 'com.google.guava', module: 'guava-jdk5'
+    }
+
+    implementation 'com.google.http-client:google-http-client-android:1.23.0'
+
+    implementation project(':androidjokesLib')
+    implementation 'junit:junit:4.13'
+
+
+
+}
