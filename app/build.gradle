@@ -59,6 +59,9 @@ android {
         paid {
             resources {
                 srcDirs 'src/paid/resources', 'src/paid/java/com.example.bigger'
+                dependencies {
+                    freeImplementation 'com.google.android.gms:play-services-ads:19.1.0'
+                }
             }
             java {
                 srcDirs 'src/paid/java', 'src/paid/java/com.example.bigger'
@@ -80,7 +83,7 @@ dependencies {
     endpointsServer project(path: ':backend', configuration: 'endpoints')
 
 
-    freeImplementation 'com.google.android.gms:play-services-ads:19.1.0'
+
 
 
     implementation ('com.google.api-client:google-api-client:1.23.0'){
@@ -96,13 +99,17 @@ dependencies {
     androidTestImplementation 'androidx.test:core:1.1.0'
     androidTestImplementation 'androidx.test.ext:junit:1.1.0'
 
-
+    androidTestImplementation 'androidx.test:runner:1.2.0'
+/*
     implementation 'com.android.support:support-annotations:28.0.0'
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation 'com.android.support.test:rules:1.0.2'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
     androidTestImplementation 'com.android.support.test.espresso:espresso-contrib:3.0.2'
     testImplementation 'junit:junit:4.13'
+
+ */
+
 }
 configurations.all {
     resolutionStrategy.force 'com.android.support:support-annotations:23.1.0'

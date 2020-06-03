@@ -9,7 +9,6 @@ import androidx.test.internal.runner.junit4.AndroidJUnit4ClassRunner;
 import com.example.androidjokeslibrary.JokeActivity;
 
 import org.junit.Before;
-import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
@@ -22,7 +21,8 @@ import static org.junit.Assert.assertTrue;
 
 
 @RunWith(AndroidJUnit4ClassRunner.class)
-public class EndpointsAsyncTaskTest {
+public class EndpointsAsynkTaskTest {
+
 
     private CountDownLatch mSignal;
     private String joke;
@@ -30,7 +30,8 @@ public class EndpointsAsyncTaskTest {
     private EndpointsAsynkTask mEndpointsAsysTask;
     private Intent mIntent;
     private String checkBackGround;
-    private static final String TAG  = EndpointsAsyncTaskTest.class.getSimpleName();
+    private static final String TAG  = EndpointsAsynkTaskTest.class.getSimpleName();
+
 
 
     @Before
