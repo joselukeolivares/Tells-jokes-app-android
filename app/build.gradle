@@ -14,6 +14,15 @@ android {
     compileSdkVersion 29
     buildToolsVersion "29.0.3"
 
+    useLibrary 'android.test.runner'
+
+    useLibrary 'android.test.base'
+    useLibrary 'android.test.mock'
+
+    configurations.all {
+        resolutionStrategy.force 'com.google.code.findbugs:jsr305:1.3.9'
+    }
+
     defaultConfig {
         applicationId "com.example.bigger"
         minSdkVersion 16
@@ -65,23 +74,36 @@ dependencies {
     implementation 'androidx.appcompat:appcompat:1.1.0'
     implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
     testImplementation 'junit:junit:4.12'
-    androidTestImplementation 'androidx.test.ext:junit:1.1.1'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
 
-    //implementation 'com.google.cloud.tools:endpoints-framework-gradle-plugin:1.0.3'
-    //endpointsServer project(path: ':backend', configuration: 'endpoints')
+    //androidTestImplementation 'androidx.test.ext:junit:1.1.1'
+    //androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
+    endpointsServer project(path: ':backend', configuration: 'endpoints')
 
+
+    freeImplementation 'com.google.android.gms:play-services-ads:19.1.0'
 
 
     implementation ('com.google.api-client:google-api-client:1.23.0'){
         exclude group: 'com.google.guava', module: 'guava-jdk5'
     }
 
+
+
     implementation 'com.google.http-client:google-http-client-android:1.23.0'
 
-    //implementation project(':androidjokesLib')
-    implementation 'junit:junit:4.13'
+    implementation project(':androidjokeslibrary')
+
+    androidTestImplementation 'androidx.test:core:1.1.0'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.0'
 
 
-
+    implementation 'com.android.support:support-annotations:28.0.0'
+    androidTestImplementation 'com.android.support.test:runner:1.0.2'
+    androidTestImplementation 'com.android.support.test:rules:1.0.2'
+    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
+    androidTestImplementation 'com.android.support.test.espresso:espresso-contrib:3.0.2'
+    testImplementation 'junit:junit:4.13'
+}
+configurations.all {
+    resolutionStrategy.force 'com.android.support:support-annotations:23.1.0'
 }

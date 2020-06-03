@@ -13,5 +13,10 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         Log.i(this.getClass().getName(),"paidDebug");
+        //tellJoke();
+    }
+
+    public void tellJoke(){
+        new EndpointsAsynkTask().execute(getApplicationContext());
     }
 }
